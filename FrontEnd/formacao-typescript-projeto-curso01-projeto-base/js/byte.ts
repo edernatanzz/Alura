@@ -1,9 +1,13 @@
 let saldo = 3000;
 
 const elementoSaldo = document.querySelector(".saldo-valor .valor");
-elementoSaldo.textContent = saldo;
+if(elementoSaldo){  
+    elementoSaldo.textContent = saldo.toString();    
+}
 
-const elementoFormulario = document.querySelector(".block-nova-transacao form");
+
+const elementoFormulario = document.querySelector(".block-nova-transacao form") as HTMLElement;
+
 elementoFormulario.addEventListener("submit", function(event) {
     event.preventDefault();
     if (!elementoFormulario.checkValidity()) {
@@ -11,13 +15,13 @@ elementoFormulario.addEventListener("submit", function(event) {
         return;
     }
 
-    const inputTipoTransacao = elementoFormulario.querySelector("#tipoTransacao");
-    const inputValor = elementoFormulario.querySelector("#valor");
-    const inputData = elementoFormulario.querySelector("#data");
+    const inputTipoTransacao = elementoFormulario.querySelector("#tipoTransacao") as HTMLSelectElement;
+    const inputValor = elementoFormulario.querySelector("#valor")as HTMLInputElement;
+    const inputData = elementoFormulario.querySelector("#data")as HTMLInputElement;
 
-    let tipoTransacao = inputTipoTransacao.value;
-    let valor = parseFloat(inputValor.value); // Converter para número
-    let data = inputData.value;
+    let tipoTransacao : string =inputTipoTransacao.value;
+    let valor: number = inputValor.valueAsNumber; 
+    let data : Date = number = new Date(inputData.value);
 
     if (isNaN(valor) || valor <= 0) {
         alert("Por favor, insira um valor válido!");
@@ -33,7 +37,7 @@ elementoFormulario.addEventListener("submit", function(event) {
         return;
     }
 
-    elementoSaldo.textContent = saldo.toFixed(2); // Formatar para duas casas decimais
+    elementoSaldo.textContent = saldo.toString(); // Formatar para duas casas decimais
 
     const novaTransacao = {
         tipoTransacao: tipoTransacao,
