@@ -35,7 +35,7 @@ public class Main {
                     System.out.print("Digite o valor a receber: ");
                     double valorRecebido = teclado.nextDouble();
                     saldoInicial += valorRecebido;
-                    System.out.println("Valor recebido com sucesso! Novo saldo: " + saldoInicial);
+                    System.out.println("Valor recebido com sucesso! Novo saldox: " + saldoInicial);
                     break;
                 case 3:
                     System.out.print("Digite o valor a transferir: ");
